@@ -13,3 +13,6 @@ This is a node.js application that is containerized using Docker and deployed on
 ```bash
 -docker build -t myapp .
 -docker run -d -p 3000:3000 myapp
+
+Deployment
+This is deployed to aws ec2 instance and can be accessed via public ip
