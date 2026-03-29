@@ -1,0 +1,25 @@
+name: Node.js CI
+
+on: [push] # Triggers on every push to any branch
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # Clones your repo onto the runner
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci # Faster, "clean" install for CI
+
+      - name: Run Build
+        run: npm run build --if-present
+
+      - name: Run Tests
+        run: npm test # Fails the pipeline if tests fail
